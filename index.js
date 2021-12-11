@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-// eslint-disable-next-line no-undef
-const args = process.argv.slice(2);
+const program = require('commander');
 
 const FileFormat = ['.otf', '.ttf', '.woff', '.woff2'];
 
@@ -52,11 +51,27 @@ function makeFontFamilyCSS(fontName, fontFiles) {
   return `${fontFamilyStyleString.slice(0, -1)};` + '\n}';
 }
 
-function main() {
-  const fontFiles = readFontFile(args[0]);
+function main(options) {
+  if (options.help) {
+    return;
+  }
+
+  const parsingDir = options.dir || './fonts';
+  const outputDir = options.output || './dist';
+
+  const fontFiles = readFontFile(parsingDir);
   const fontFamilyCSSString = makeFontFamily(fontFiles);
-  fs.mkdirSync('./dist', { recursive: true });
-  fs.writeFileSync('./dist/font.css', fontFamilyCSSString);
+  fs.mkdirSync(outputDir, { recursive: true });
+  fs.writeFileSync(`${outputDir}/fonts.css`, fontFamilyCSSString);
 }
 
-main();
+program
+  .option('-d, --dir <dir>', 'Parsing dir')
+  .option('-o, --output <dir>', 'Output dir')
+  .action(() => {
+    const options = program.opts();
+    main(options);
+  });
+
+// eslint-disable-next-line no-undef
+program.parse(process.argv);
