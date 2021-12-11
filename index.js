@@ -72,6 +72,7 @@ program
   .option('-o, --output <dir>', 'Output dir')
   .action(() => {
     const options = program.opts();
+    console.log('options', options);
     main(options);
   });
 
