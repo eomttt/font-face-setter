@@ -1,6 +1,6 @@
 {
   "name": "gen-font-face",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate font-face CSS file from font files",
   "bin": {
     "gen-font-face": "index.js"
