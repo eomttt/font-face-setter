@@ -31,5 +31,5 @@ Options:
 
 
 ## Demo
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/22593217/145664659-7ef0c9bc-3829-4fcf-b8b1-cfc7e18632f2.gif)
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/22593217/145664735-6db9328c-8760-4fa7-8187-76c58b6aac31.gif)
 
