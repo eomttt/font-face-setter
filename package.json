@@ -1,5 +1,5 @@
 {
-  "name": "font-face-setter",
+  "name": "gen-font-face",
   "version": "1.0.0",
   "description": "Generate font-face CSS file from font files",
   "bin": {
