@@ -59,7 +59,7 @@ function main(options) {
   }
 
   const parsingDir = options.dir || './fonts';
-  const outputDir = options.output || './dist';
+  const outputDir = options.output || parsingDir;
 
   const fontFiles = readFontFile(parsingDir);
   const fontFamilyCSSString = makeFontFamily(fontFiles);
