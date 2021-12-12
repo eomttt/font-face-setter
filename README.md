@@ -14,10 +14,11 @@ or
 Usage: gen-font-face [options]
 
 Options:
-  -c, --config <dir>  Config dir
-  -d, --dir <dir>     Parsing dir
-  -o, --output <dir>  Output dir
-  -h, --help          display help for command
+  -c, --config <dir>     Config dir
+  -p, --prefix <prefix>  Prefix for font files
+  -d, --dir <dir>        Parsing dir
+  -o, --output <dir>     Output dir
+  -h, --help             display help for command
 ```
 
 ## Options
