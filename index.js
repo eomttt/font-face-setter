@@ -129,7 +129,7 @@ function main(options) {
     // If can not find config file, pass
   }
 
-  const parsingDir = options.dir || config?.dir || './fonts';
+  const parsingDir = options.dir || config?.dir || 'fonts';
   const outputDir = options.output || config?.output || parsingDir;
 
   const fontFiles = readFontFile(parsingDir);
