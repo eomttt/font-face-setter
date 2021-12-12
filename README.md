@@ -36,11 +36,15 @@ Options:
 }
 ```
 
-### -d, --dir (Default: `./fonts` directory)
+### -c, --config (Default: `./config.json`)
+
+> Config file.
+
+### -d, --dir (Default: `fonts` directory)
 
 > Specify the directory to parse.
 
-### -o, --output (Default: `Directory to parse (./fonts)`)
+### -o, --output (Default: `Directory to parse (fonts)`)
 
 > Specify the output directory.
 
