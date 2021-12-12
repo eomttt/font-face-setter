@@ -30,6 +30,7 @@ Options:
 ```json
 {
   "dir" // Specify the directory to parse
+  "prefix" // Specify the prefix of the font url (Default is dir)
   "weight" // font-weight offset
   "style" // Additional font style
   "output" // Specify the output directory
@@ -44,6 +45,10 @@ Options:
 
 > Specify the directory to parse.
 
+### -p, --prefix (Default: --dir option)
+
+> Specify the prefix of the font url.
+
 ### -o, --output (Default: `Directory to parse (fonts)`)
 
 > Specify the output directory.
@@ -53,6 +58,7 @@ Options:
 ```json
 {
   "dir": "fonts", // Specify the directory to parse
+  "prefix": "public/fonts", // Specify the prefix of the font url (Default is dir)
   "weight": {
     // font-weight offset
     "Thin": 100,
@@ -72,27 +78,27 @@ Above this json file font.css write like this
 ```css
 @font-face {
   font-family: 'FontName';
-  src: url('fonts/FontName.woff2') format('woff2');
+  src: url('public/fonts/FontName.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'FontNameWithWeight';
-  src: url('fonts/FontNameWithWeight-Thin.woff2') format('woff2');
+  src: url('public/fonts/FontNameWithWeight-Thin.woff2') format('woff2');
   font-weight: 100;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'FontNameWithWeight';
-  src: url('fonts/FontNameWithWeight-Light.woff2') format('woff2');
+  src: url('public/fonts/FontNameWithWeight-Light.woff2') format('woff2');
   font-weight: 300;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'FontNameWithWeight';
-  src: url('fonts/FontNameWithWeight-Regular.woff2') format('woff2');
+  src: url('public/fonts/FontNameWithWeight-Regular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }

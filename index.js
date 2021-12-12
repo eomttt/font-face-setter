@@ -54,15 +54,6 @@ function orderFontFiles(fontFiles) {
   }, {});
 }
 
-function makeFontFamily(fontFiles, config) {
-  const fontFamilyCSS = [];
-  Object.entries(fontFiles).forEach(([fontName, fontFiles]) => {
-    fontFamilyCSS.push(makeFontFamilyCSS(fontName, fontFiles, config));
-  });
-
-  return fontFamilyCSS.join('\n');
-}
-
 function getFontWeightCSS(fontStyles, configWeight = {}) {
   let fontWeight;
   const weightKeys = Object.keys(configWeight);
@@ -94,7 +85,7 @@ function getFontStyleCSS(configStyle = {}) {
   }, '');
 }
 
-function makeFontFamilyCSS(fontName, fontFiles, config) {
+function makeFontFamilyCSS(fontName, fontFiles, prefix, config) {
   const [pureFontName, ...rest] = fontName.split('-');
 
   let fontFamilyStyleString =
@@ -102,7 +93,8 @@ function makeFontFamilyCSS(fontName, fontFiles, config) {
 
   for (let fontFile of fontFiles) {
     const [format] = fontFile.split('.').slice(-1);
-    fontFamilyStyleString = `${fontFamilyStyleString} url('${fontFile}') format('${FormatTypes[format]}'),`;
+    const url = prefix ? `${prefix}/${pureFontName}` : fontFile;
+    fontFamilyStyleString = `${fontFamilyStyleString} url('${url}') format('${FormatTypes[format]}'),`;
   }
 
   fontFamilyStyleString = `${fontFamilyStyleString.slice(0, -1)}`;
@@ -129,12 +121,19 @@ function main(options) {
     // If can not find config file, pass
   }
 
+  const fontFamilyCSS = [];
   const parsingDir = options.dir || config?.dir || 'fonts';
   const outputDir = options.output || config?.output || parsingDir;
+  const prefix = options.prefix || config?.prefix;
 
   const fontFiles = readFontFile(parsingDir);
   const orderedFontFiles = orderFontFiles(fontFiles);
-  const fontFamilyCSSString = makeFontFamily(orderedFontFiles, config);
+
+  Object.entries(orderedFontFiles).forEach(([fontName, fontFiles]) => {
+    fontFamilyCSS.push(makeFontFamilyCSS(fontName, fontFiles, prefix, config));
+  });
+
+  const fontFamilyCSSString = fontFamilyCSS.join('\n');
 
   fs.mkdirSync(outputDir, { recursive: true });
   fs.writeFileSync(`${outputDir}/fonts.css`, fontFamilyCSSString);
@@ -142,11 +141,11 @@ function main(options) {
 
 program
   .option('-c, --config <dir>', 'Config dir')
+  .option('-p, --prefix <prefix>', 'Prefix for font files')
   .option('-d, --dir <dir>', 'Parsing dir')
   .option('-o, --output <dir>', 'Output dir')
   .action(() => {
     const options = program.opts();
-    console.log('options', options);
     main(options);
   });
 
