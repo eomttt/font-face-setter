@@ -24,7 +24,24 @@ Options:
 ### Using `config.json`
 
 - When set config.json file you add specific font-weight, font-style
-- If skip this file default default id `dir` and `output`
+- If skip this file, default is only set `dir` and `output`
+
+```json
+{
+  "dir" // Specify the directory to parse
+  "weight" // font-weight offset
+  "style" // Additional font style
+  "output" // Specify the output directory
+}
+```
+
+### -d, --dir (Default: `./fonts` directory)
+
+> Specify the directory to parse.
+
+### -o, --output (Default: `Directory to parse (./fonts)`)
+
+> Specify the output directory.
 
 ### Example
 
@@ -75,14 +92,6 @@ Above this json file font.css write like this
   font-display: swap;
 }
 ```
-
-### -d, --dir (Default: `./fonts` directory)
-
-> Specify the directory to parse.
-
-### -o, --output (Default: `Directory to parse (./fonts)`)
-
-> Specify the output directory.
 
 ## Demo
 
