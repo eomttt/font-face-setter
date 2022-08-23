@@ -67,7 +67,7 @@ function getFontWeightCSS(fontStyles, configWeight = {}) {
   });
 
   if (!fontWeight) {
-    return '';
+    return '\n font-weight: ' + `400;`;
   }
 
   return '\n font-weight: ' + `${configWeight[fontWeight]};`;
