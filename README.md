@@ -58,23 +58,27 @@ Options:
 
 ```json
 {
-  "dir": "fonts", // Specify the directory to parse
-  "prefix": "public/fonts", // Specify the prefix of the font url (Default is dir)
+  "dir": "fonts",
+  "prefix": "public/fonts",
   "weight": {
-    // font-weight offset
     "Thin": 100,
     "Light": 300,
     "Regular": 400
   },
   "style": {
-    // Additional font style
     "font-display": "swap"
   },
-  "output": "dist" // Specify the output directory
+  "output": "dist"
 }
 ```
 
 Above this json file font.css write like this
+
+** If you want apply `weight` font file name convention must `${fontName}-${weightName}` with `-` 
+
+For example `FontNameWithWeight-Thin.woff2` file in `fonts/` directory.
+Also `json` file has `weight` object and has `Thin` key in `weight` object
+So this font file(`FontNameWithWeight-Thin.woff2`) written in css file
 
 ```css
 @font-face {

@@ -96,8 +96,8 @@ function makeFontFamilyCSS(fontName, fontFiles, prefix, config) {
     let url = fontFile;
 
     if (prefix) {
-      if (prefix === '/') {
-        url = `/${fontName}.${format}`
+      if (prefix.endsWith('/')) {
+        url = `${prefix}${fontName}.${format}`
       } else {
         url = `${prefix}/${fontName}.${format}`;
       }
