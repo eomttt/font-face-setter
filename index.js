@@ -93,7 +93,15 @@ function makeFontFamilyCSS(fontName, fontFiles, prefix, config) {
 
   for (let fontFile of fontFiles) {
     const [format] = fontFile.split('.').slice(-1);
-    const url = prefix ? `${prefix}/${pureFontName}` : fontFile;
+    let url = fontFile;
+
+    if (prefix) {
+      if (prefix === '/') {
+        url = `/${pureFontName}`
+      } else {
+        url = `${prefix}/${pureFontName}`;
+      }
+    }
     fontFamilyStyleString = `${fontFamilyStyleString} url('${url}') format('${FormatTypes[format]}'),`;
   }
 
