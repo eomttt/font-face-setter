@@ -97,9 +97,9 @@ function makeFontFamilyCSS(fontName, fontFiles, prefix, config) {
 
     if (prefix) {
       if (prefix === '/') {
-        url = `/${pureFontName}`
+        url = `/${fontName}.${format}`
       } else {
-        url = `${prefix}/${pureFontName}`;
+        url = `${prefix}/${fontName}.${format}`;
       }
     }
     fontFamilyStyleString = `${fontFamilyStyleString} url('${url}') format('${FormatTypes[format]}'),`;
